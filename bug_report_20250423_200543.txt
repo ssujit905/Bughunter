@@ -1,0 +1,13 @@
+[!] Potential SQL Injection vulnerabilities found:
+ - Potential SQL Injection found in URL: #
+ - Potential SQL Injection found in URL: #
+ - Potential SQL Injection found in URL: #
+[!] Exposed sensitive files/directories:
+ - Sensitive file exposed: https://www.facebook.com/.git
+ - Sensitive file exposed: https://www.facebook.com/.env
+ - Sensitive file exposed: https://www.facebook.com/config.php
+ - Sensitive file exposed: https://www.facebook.com/backup.zip
+ - Sensitive file exposed: https://www.facebook.com/db.sql
+ - Sensitive file exposed: https://www.facebook.com/admin.php
+[!] Clickjacking vulnerability: No, protected from clickjacking
+Page Speed: Page load time is acceptable: 0.5s

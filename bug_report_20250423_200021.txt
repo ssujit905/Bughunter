@@ -1,0 +1,2 @@
+[!] Clickjacking vulnerability: Error while checking clickjacking
+Page Speed: Page load time is acceptable: 0.5s

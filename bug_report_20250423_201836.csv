@@ -1,0 +1,10 @@
+Issue Type,Details
+Sensitive File,https://www.facebook.com/.git
+Sensitive File,https://www.facebook.com/.env
+Sensitive File,https://www.facebook.com/config.php
+Sensitive File,https://www.facebook.com/backup.zip
+Sensitive File,https://www.facebook.com/db.sql
+Sensitive File,https://www.facebook.com/admin.php
+Sensitive File,https://www.facebook.com/.htaccess
+Clickjacking Vulnerability,No
+Page Speed,Load time: 0.48s

@@ -1,0 +1,17 @@
+Bug Report for https://www.facebook.com
+Scan started at 2025-04-23 20:18:36
+
+[!] No SQL Injection vulnerabilities found.
+
+[!] Exposed sensitive files/directories found:
+- https://www.facebook.com/.git
+- https://www.facebook.com/.env
+- https://www.facebook.com/config.php
+- https://www.facebook.com/backup.zip
+- https://www.facebook.com/db.sql
+- https://www.facebook.com/admin.php
+- https://www.facebook.com/.htaccess
+
+[!] Clickjacking vulnerability: No
+
+[+] Page load time: 0.48s

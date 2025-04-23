@@ -1,0 +1,10 @@
+Clickjacking Vulnerable: No
+Sensitive File: http://www.facebook.com/.git
+Sensitive File: http://www.facebook.com/.env
+Sensitive File: http://www.facebook.com/config.php
+Sensitive File: http://www.facebook.com/backup.zip
+Sensitive File: http://www.facebook.com/db.sql
+Sensitive File: http://www.facebook.com/admin.php
+SSL/TLS Certificate: SSL/TLS certificate is valid.
+Page Speed: [+] Page load time is acceptable: 
+0.73>

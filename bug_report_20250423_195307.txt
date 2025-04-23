@@ -1,0 +1,9 @@
+Clickjacking Vulnerable: No
+Exposed Directory or File: http://www.facebook.com/admin/ (Status: 200)
+Exposed Directory or File: http://www.facebook.com/uploads/ (Status: 200)
+Exposed Directory or File: http://www.facebook.com/config/ (Status: 200)
+Exposed Directory or File: http://www.facebook.com/.git/ (Status: 200)
+Exposed Directory or File: http://www.facebook.com/.env (Status: 200)
+Exposed Directory or File: http://www.facebook.com/backup.zip (Status: 200)
+Exposed Directory or File: http://www.facebook.com/db.sql (Status: 200)
+Page Speed: [+] Page load time is acceptable: 0.65s
