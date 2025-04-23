@@ -1,0 +1,8 @@
+Issue Type,Details
+Missing Header,Content-Security-Policy
+Missing Header,X-Frame-Options
+Missing Header,Strict-Transport-Security
+Missing Header,X-Content-Type-Options
+Clickjacking Vulnerable,Yes
+SSL/TLS Certificate,SSL/TLS certificate is valid.
+Page Speed,[+] Page load time is acceptable: 2.271055 seconds

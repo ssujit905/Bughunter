@@ -67,6 +67,53 @@ def check_open_redirect(url):
 
     return open_redirects
 
+def check_sensitive_files(url):
+    sensitive_files = [
+        "/.env", "/.git", "/.git/config", "/.git/HEAD", "/robots.txt", "/config.php"
+    ]
+    exposed_files = []
+
+    for file in sensitive_files:
+        check_url = urljoin(url, file)
+        response = requests.get(check_url, timeout=10)
+        if response.status_code == 200:
+            exposed_files.append(check_url)
+
+    return exposed_files
+
+def check_subdomain_takeover(url):
+    subdomains = [
+        ".herokuapp.com", ".github.io", ".netlify.com", ".firebaseapp.com", ".azurewebsites.net"
+    ]
+    detected_takeovers = []
+
+    for subdomain in subdomains:
+        if subdomain in url:
+            detected_takeovers.append(url)
+    
+    return detected_takeovers
+
+def check_ssl_cert(url):
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200 and url.startswith("https://"):
+            return "SSL/TLS certificate is valid."
+        else:
+            return "SSL/TLS certificate might not be valid or not using HTTPS."
+    except requests.exceptions.RequestException as e:
+        return f"[!] Error checking SSL certificate: {e}"
+
+def check_page_speed(url):
+    try:
+        response = requests.get(url, timeout=10)
+        load_time = response.elapsed.total_seconds()
+        if load_time > 3:  # If page load time is more than 3 seconds, flag it
+            return f"[!] Page load time is slow: {load_time} seconds"
+        else:
+            return f"[+] Page load time is acceptable: {load_time} seconds"
+    except requests.exceptions.RequestException as e:
+        return f"[!] Error checking page speed: {e}"
+
 def scan_site(url):
     print(f"\nScanning: {url}")
     links = fetch_links(url)
@@ -74,6 +121,10 @@ def scan_site(url):
 
     missing_headers, clickjacking_vulnerable = check_security_headers(url)
     open_redirects = check_open_redirect(url)
+    sensitive_files = check_sensitive_files(url)
+    subdomain_takeover = check_subdomain_takeover(url)
+    ssl_cert = check_ssl_cert(url)
+    page_speed = check_page_speed(url)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     txt_report = f"bug_report_{timestamp}.txt"
@@ -89,8 +140,11 @@ def scan_site(url):
 
         f.write(f"\nSecurity Headers Missing: {', '.join(missing_headers) if missing_headers else 'None'}\n")
         f.write(f"Clickjacking Vulnerable: {'Yes' if clickjacking_vulnerable else 'No'}\n")
-
-        f.write(f"\nOpen Redirects Found: {', '.join(open_redirects) if open_redirects else 'None'}\n")
+        f.write(f"Open Redirects Found: {', '.join(open_redirects) if open_redirects else 'None'}\n")
+        f.write(f"Sensitive Files Exposed: {', '.join(sensitive_files) if sensitive_files else 'None'}\n")
+        f.write(f"Subdomain Takeover Detected: {', '.join(subdomain_takeover) if subdomain_takeover else 'None'}\n")
+        f.write(f"SSL/TLS Certificate: {ssl_cert}\n")
+        f.write(f"Page Speed: {page_speed}\n")
 
     # Save CSV Report
     with open(csv_report, 'w', newline='') as csvfile:
@@ -103,22 +157,15 @@ def scan_site(url):
         writer.writerow(['Clickjacking Vulnerable', 'Yes' if clickjacking_vulnerable else 'No'])
         for redirect in open_redirects:
             writer.writerow(['Open Redirect', redirect])
+        for file in sensitive_files:
+            writer.writerow(['Sensitive File', file])
+        for subdomain in subdomain_takeover:
+            writer.writerow(['Subdomain Takeover', subdomain])
+        writer.writerow(['SSL/TLS Certificate', ssl_cert])
+        writer.writerow(['Page Speed', page_speed])
 
     print(f"\nReports saved: {txt_report} and {csv_report}")
-    print(f"{len(broken)} broken links found.")
-    if missing_headers:
-        print(f"[!] {len(missing_headers)} security headers missing.")
-    else:
-        print("[+] All important security headers are present!")
-    if clickjacking_vulnerable:
-        print("[!] Site may be vulnerable to Clickjacking!")
-    else:
-        print("[+] Clickjacking protection is in place.")
-    if open_redirects:
-        print(f"[!] Found open redirect(s): {', '.join(open_redirects)}")
-    else:
-        print("[+] No open redirects detected.")
 
 if __name__ == "__main__":
-    url = input("Enter website URL (e.g. https://example.com): ").strip()
+    url = input("Enter website URL (e.g. https://example.com): ")
     scan_site(url)

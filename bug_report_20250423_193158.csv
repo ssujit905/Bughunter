@@ -1,0 +1,8 @@
+Issue Type,Details
+Clickjacking Vulnerable,No
+Sensitive File,https://www.facebook.com/.env
+Sensitive File,https://www.facebook.com/.git
+Sensitive File,https://www.facebook.com/robots.txt
+Sensitive File,https://www.facebook.com/config.php
+SSL/TLS Certificate,SSL/TLS certificate is valid.
+Page Speed,[+] Page load time is acceptable: 0.684012 seconds

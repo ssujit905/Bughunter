@@ -1,0 +1,12 @@
+Bug Report for https://www.facebook.com
+==================================================
+
+Broken Links:
+
+Security Headers Missing: None
+Clickjacking Vulnerable: No
+Open Redirects Found: None
+Sensitive Files Exposed: https://www.facebook.com/.env, https://www.facebook.com/.git, https://www.facebook.com/robots.txt, https://www.facebook.com/config.php
+Subdomain Takeover Detected: None
+SSL/TLS Certificate: SSL/TLS certificate is valid.
+Page Speed: [+] Page load time is acceptable: 0.684012 seconds
