@@ -1,0 +1,6 @@
+Issue Type,Details
+Missing Header,Content-Security-Policy
+Missing Header,X-Frame-Options
+Missing Header,Strict-Transport-Security
+Missing Header,X-Content-Type-Options
+Clickjacking Vulnerable,Yes

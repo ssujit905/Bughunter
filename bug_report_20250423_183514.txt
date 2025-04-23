@@ -1,0 +1,6 @@
+Bug Report for https://example.com
+
+Working Links:
+[200] https://www.iana.org/domains/example
+
+Broken Links:

@@ -1,0 +1,7 @@
+Bug Report for https://example.com
+==================================================
+
+Broken Links:
+
+Security Headers Missing: Content-Security-Policy, X-Frame-Options, Strict-Transport-Security, X-Content-Type-Options
+Clickjacking Vulnerable: Yes
